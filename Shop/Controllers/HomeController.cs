@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Dao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +11,24 @@ namespace Shop.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Slides = new SlideDao().ListAll();
+            ViewBag.FeatureProduct = new ProductDao().ListFeatureProduct(4);
+            ViewBag.NewProduct = new ProductDao().ListNewProduct(4);
             return View();
         }
 
-        public ActionResult About()
+        [ChildActionOnly]
+        public ActionResult MainMenu()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var model = new MenuDao().ListByGroupID(1);
+            return PartialView(model);
         }
 
-        public ActionResult Contact()
+        [ChildActionOnly]
+        public ActionResult Footer()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var model = new FooterDao().GetFooter(2);
+            return PartialView(model);
         }
     }
 }

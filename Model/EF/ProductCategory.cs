@@ -42,5 +42,7 @@ namespace Model.EF
         public bool? Status { get; set; }
 
         public bool? ShowOnHome { get; set; }
+
+        public int Type { get; set; }
     }
 }
