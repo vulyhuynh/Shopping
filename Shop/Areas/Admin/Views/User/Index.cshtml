@@ -11,6 +11,10 @@
     <a class="btn btn-primary" href="/Admin/User/Create"><i class="fas fa-user-plus"></i> Add new user</a>
 }
 
+@section jsFooter{
+    <script src="~/Assets/Admin/js/controller/UserController.js"></script>
+}
+
 <div class="table-responsive">
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -37,7 +41,7 @@
                     <td>@item.Phone</td>
                     <td>@item.CreatedDate.Value.ToLongDateString()</td>
                     <td>@item.ModifiedDate</td>
-                    <td>@item.Status</td>
+                    <td><a href="#" class="btn-active btn-outline-primary" data-id="@item.ID">@item.Status</a></td>
                     <td>
                         <a href="/Admin/User/Update/@item.ID" class="btn btn-warning btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                         <a href="/Admin/User/Delete/@item.ID" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Bạn có chắc muốn xóa không?')"><i class="fas fa-trash"></i></a>

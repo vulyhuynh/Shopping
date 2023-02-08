@@ -87,5 +87,15 @@ namespace Shop.Areas.Admin.Controllers
             bool res = dao.Delete(id);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var res = new UserDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = res
+            });
+        }
     }
 }
